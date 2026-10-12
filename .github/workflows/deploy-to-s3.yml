@@ -18,7 +18,7 @@ jobs:
 
       - name: make build
         run: npm run build 
-         
+
       - name: "configure aws credentials"
         uses: aws-actions/configure-aws-credentials@v6
         with:
@@ -27,4 +27,4 @@ jobs:
           aws-region: ${{ secrets. AWS_REGION }}
 
       - name: "Upload files on s3"
-        run: aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME}} --delete
+        run: aws s3 sync ./dist s3://${{ secrets.S3_BUCKET_NAME}} --delete
